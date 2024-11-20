@@ -1,4 +1,4 @@
-import { hash, verify } from "jsr:@felix/argon2";
+import { hash, verify } from "@felix/argon2";
 const HASH_OPTIONS = getHashOptions();
 
 export async function hashPassword(password: string) {
