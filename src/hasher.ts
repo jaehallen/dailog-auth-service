@@ -1,28 +1,33 @@
-import { hash, verify } from "@felix/argon2";
+import { hash, verify } from "@stdext/crypto/hash";
 const HASH_OPTIONS = getHashOptions();
+const ARGON_OPTIONS = {
+  name: "argon2",
+  algorithm: "argon2id",
+  ...HASH_OPTIONS,
+};
 
-export async function hashPassword(password: string) {
-	return await hash(password, HASH_OPTIONS);
+export function hashPassword(password: string) {
+  return hash(ARGON_OPTIONS, password);
 }
 
-export async function verifyPassword(hash: string, password: string) {
-	return await verify(hash, password);
+export function verifyPassword(hash: string, password: string) {
+  return verify(ARGON_OPTIONS, password, hash);
 }
 
 function getHashOptions() {
-	const timeCost = parseInt(Deno.env.get("HASH_TIMECOST") ?? "");
-	const memoryCost = parseInt(Deno.env.get("HASH_MEMORYCOST") ?? "");
+  const timeCost = parseInt(Deno.env.get("HASH_TIMECOST") ?? "");
+  const memoryCost = parseInt(Deno.env.get("HASH_MEMORYCOST") ?? "");
 
-	if (!timeCost) {
-		throw new Error("Invalid hash timecost");
-	}
+  if (!timeCost) {
+    throw new Error("Invalid hash timecost");
+  }
 
-	if (!memoryCost) {
-		throw new Error("Invalid hash memoryCost");
-	}
+  if (!memoryCost) {
+    throw new Error("Invalid hash memoryCost");
+  }
 
-	return {
-		timeCost,
-		memoryCost,
-	};
+  return {
+    timeCost,
+    memoryCost,
+  };
 }

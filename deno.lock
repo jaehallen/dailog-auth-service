@@ -4,8 +4,7 @@
     "jsr:@denosaurs/plug@^1.0.6": "1.0.6",
     "jsr:@felix/argon2@*": "2.0.2",
     "jsr:@felix/argon2@^2.0.2": "2.0.2",
-    "jsr:@hono/hono@*": "4.6.10",
-    "jsr:@hono/hono@^4.6.10": "4.6.10",
+    "jsr:@hono/hono@^4.6.11": "4.6.11",
     "jsr:@std/assert@0.221": "0.221.0",
     "jsr:@std/assert@1": "1.0.8",
     "jsr:@std/encoding@0.221": "0.221.0",
@@ -31,8 +30,8 @@
         "jsr:@denosaurs/plug"
       ]
     },
-    "@hono/hono@4.6.10": {
-      "integrity": "dae93ac8bb49881f99506aa8e01e5536d5d72cc3c2b556bde2816fdf25ca609c"
+    "@hono/hono@4.6.11": {
+      "integrity": "07399d911f09e94b7dc1e0e0a0577d35fe66578af20163d513958364c4e9e702"
     },
     "@std/assert@0.221.0": {
       "integrity": "a5f1aa6e7909dbea271754fd4ab3f4e687aeff4873b4cef9a320af813adb489a"
@@ -201,7 +200,7 @@
   "workspace": {
     "dependencies": [
       "jsr:@felix/argon2@^2.0.2",
-      "jsr:@hono/hono@^4.6.10",
+      "jsr:@hono/hono@^4.6.11",
       "jsr:@std/assert@1"
     ]
   }
