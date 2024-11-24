@@ -6,12 +6,24 @@ const ARGON_OPTIONS = {
   ...HASH_OPTIONS,
 };
 
+export const MAX_PASSWORD = Number(Deno.env.get("PASSWORD_MIN") || "") || 6;
+
 export function hashPassword(password: string) {
   return hash(ARGON_OPTIONS, password);
 }
 
 export function verifyPassword(hash: string, password: string) {
-  return verify(ARGON_OPTIONS, password, hash);
+  try {
+    if (password.length < MAX_PASSWORD || !hash.length) {
+      return false;
+    }
+    const checked = verify(ARGON_OPTIONS, password, hash);
+    return checked;
+  } catch (error) {
+    console.error(error);
+  }
+
+  return false;
 }
 
 function getHashOptions() {
